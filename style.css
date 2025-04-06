@@ -1,0 +1,397 @@
+html, body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a; /* ดำเข้ม */
+    color: #d8bfd8; /* ม่วงอ่อน */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%; /* เต็มความกว้าง */
+    overflow-x: hidden; /* ซ่อน scrollbar แนวนอน */
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #d8bfd8;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #b0a8b9;
+}
+
+.next-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4b2e5a;
+    color: #d8bfd8;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 1rem;
+}
+
+.next-btn:hover {
+    background: #6b4e7a;
+}
+
+/* Index Page (Big Picture Style) */
+.index-sections {
+    margin: 0;
+    padding: 0;
+}
+
+.index-section {
+    position: relative;
+    height: 100vh; /* เต็มจอ */
+    width: 100vw; /* เต็มความกว้าง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* เพิ่มเลเยอร์สีดำจาง ๆ */
+.index-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* สีดำจาง ๆ */
+}
+
+/* กำหนดพื้นหลังให้แต่ละ section */
+.index-section:nth-child(1) {
+    background-image: url('images/bg1.jpg');
+}
+.index-section:nth-child(2) {
+    background-image: url('images/bg2.jpg');
+}
+.index-section:nth-child(3) {
+    background-image: url('images/bg3.jpg');
+}
+.index-section:nth-child(4) {
+    background-image: url('images/bg4.jpg');
+}
+.index-section:nth-child(5) {
+    background-image: url('images/bg5.jpg');
+}
+
+.index-section h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #d8bfd8;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* ให้ข้อความอยู่เหนือเลเยอร์สีดำ */
+}
+
+.index-section h2.visible {
+    opacity: 1;
+}
+
+.index-section .next-btn {
+    position: absolute;
+    bottom: 50px;
+    z-index: 1; /* ให้ปุ่มอยู่เหนือเลเยอร์สีดำ */
+}
+
+/* Section 4: Cake and Text Layout */
+.index-section:nth-child(4) {
+    display: flex;
+    justify-content: center; /* จัดกึ่งกลางทั้งแนวนอน */
+    align-items: center;
+    padding: 0 50px; /* เพิ่ม padding เพื่อให้มีระยะห่างจากขอบ */
+}
+
+.cake-container {
+    display: flex;
+    justify-content: center; /* จัดกึ่งกลาง */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* จำกัดความกว้างสูงสุด */
+    gap: 40px; /* ระยะห่างระหว่างรูปเค้กและข้อความ */
+}
+
+.cake-img {
+    width: 300px; /* ขนาดรูปเค้ก (square) */
+    height: 300px;
+    object-fit: cover; /* รักษาสัดส่วนของรูป */
+}
+
+.index-section:nth-child(4) h2 {
+    text-align: center;
+    flex: 1; /* ให้ข้อความใช้พื้นที่ที่เหลือ */
+    line-height: 1.5; /* เพิ่มระยะห่างระหว่างบรรทัด */
+}
+
+.heart-emoji {
+    font-size: 2rem; /* ขนาดอิโมจิ */
+}
+
+/* You as a... (Big Picture Style) */
+.you-sections {
+    margin: 0;
+    padding: 0;
+}
+
+.you-section {
+    position: relative;
+    height: 100vh; /* เต็มจอ */
+    width: 100vw; /* เต็มความกว้าง */
+    display: flex;
+    flex-direction: column; /* เปลี่ยนเป็น column เพื่อให้ h2 และ p เรียงกัน */
+    justify-content: center;
+    align-items: center;
+    background-size: cover; /* ใช้ cover เพื่อให้รูปเต็มจอ */
+    background-position: center;
+    background-attachment: fixed; /* ให้รูปพื้นหลังคงที่ขณะเลื่อน */
+    background-repeat: no-repeat; /* ป้องกันการซ้ำของรูป */
+}
+
+/* เพิ่มเลเยอร์สีดำจาง ๆ ด้วย ::before */
+.you-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* สีดำจาง ๆ */
+}
+
+/* Intro Section (ยกเว้นเลเยอร์สีดำ) */
+.you-section.intro-section {
+    background-color: #1a1a1a; /* พื้นหลังสีดำเข้ม */
+    background-image: none; /* ไม่ใช้รูปพื้นหลัง */
+    height: 50vh; /* ลดความสูงลงครึ่งหนึ่ง */
+}
+
+.you-section.intro-section::before {
+    display: none; /* ไม่แสดงเลเยอร์สีดำใน intro-section */
+}
+
+/* กำหนดพื้นหลังให้แต่ละ section */
+.you-section:nth-child(2) {
+    background-image: url('images/you1.jpg');
+}
+.you-section:nth-child(3) {
+    background-image: url('images/you2.jpg');
+}
+.you-section:nth-child(4) {
+    background-image: url('images/you3.jpg');
+}
+.you-section:nth-child(5) {
+    background-image: url('images/you4.jpg');
+}
+.you-section:nth-child(6) {
+    background-image: url('images/you5.jpg');
+}
+.you-section:nth-child(7) {
+    background-image: url('images/you6.jpg');
+}
+.you-section:nth-child(8) {
+    background-image: url('images/you7.jpg');
+}
+.you-section:nth-child(9) {
+    background-image: url('images/you8.jpg');
+}
+.you-section:nth-child(10) {
+    background-image: url('images/you9.jpg');
+}
+.you-section:nth-child(11) {
+    background-image: url('images/you10.jpg');
+}
+
+.you-section h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #d8bfd8;
+    opacity: 0; /* เริ่มต้นซ่อน */
+    transition: opacity 1s ease; /* Fade-in 1 วินาที */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้ข้อความชัด */
+    z-index: 1; /* ให้ข้อความอยู่เหนือเลเยอร์สีดำ */
+}
+
+.you-section h2.visible {
+    opacity: 1; /* แสดงเมื่ออยู่ใน viewport */
+}
+
+.you-section .section-detail {
+    font-size: 1.5rem; /* ขนาดตัวอักษรสำหรับ detail */
+    font-weight: 300;
+    color: #f0e6f0;
+    opacity: 0; /* ซ่อนไว้ก่อน */
+    transition: opacity 1s ease; /* ใช้ transition เพื่อให้โชว์แบบนุ่มนวล */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    text-align: center;
+    max-width: 80%; /* จำกัดความกว้างเพื่อให้อ่านง่าย */
+}
+
+.you-section .section-detail.visible {
+    opacity: 1; /* โชว์เมื่อเลื่อนถึง */
+}
+
+.you-section .next-btn {
+    position: absolute;
+    bottom: 50px;
+    z-index: 1; /* ให้ปุ่มอยู่เหนือเลเยอร์สีดำ */
+}
+
+/* Love Coupons Page */
+.love-coupons-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #1a1a1a;
+}
+
+.love-coupons-page h1 {
+    text-align: center;
+}
+
+.coupon-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100vw;
+    height: calc(100vh - 120px);
+    margin: 0;
+}
+
+.coupon-card {
+    position: relative;
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.coupon-card:nth-child(1) { background-image: url('images/1.jpg'); }
+.coupon-card:nth-child(2) { background-image: url('images/2.jpg'); }
+.coupon-card:nth-child(3) { background-image: url('images/3.jpg'); }
+.coupon-card:nth-child(4) { background-image: url('images/4.jpg'); }
+.coupon-card:nth-child(5) { background-image: url('images/5.jpg'); }
+.coupon-card:nth-child(6) { background-image: url('images/6.jpg'); }
+.coupon-card:nth-child(7) { background-image: url('images/7.jpg'); }
+.coupon-card:nth-child(8) { background-image: url('images/8.jpg'); }
+.coupon-card:nth-child(9) { background-image: url('images/9.jpg'); }
+.coupon-card:nth-child(10) { background-image: url('images/10.jpg'); }
+
+.coupon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
+}
+
+.coupon-card:hover::before {
+    opacity: 0;
+}
+
+.coupon-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* จัดกึ่งกลางแนวตั้ง */
+    align-items: center; /* จัดกึ่งกลางแนวนอน */
+    text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+    padding: 15px; /* ลด padding เพื่อให้ข้อความไม่ชิดขอบเกินไป */
+    background: rgba(43, 29, 47, 0.5);
+    z-index: 1;
+    box-sizing: border-box; /* ให้ padding รวมอยู่ในขนาด */
+}
+
+.coupon-content h2 {
+    font-size: 1.2rem; /* ลดขนาดตัวอักษรเพื่อป้องกันตกขอบ */
+    font-weight: 400;
+    color: #d8bfd8;
+    margin: 0 0 5px 0; /* เพิ่มระยะห่างด้านล่าง */
+    transition: opacity 0.3s ease;
+    line-height: 1.2; /* ป้องกันข้อความทับกัน */
+    max-width: 90%; /* จำกัดความกว้างเพื่อป้องกันตกขอบ */
+    word-wrap: break-word; /* ให้ข้อความตัดคำเมื่อถึงขอบ */
+}
+
+.coupon-content p {
+    font-size: 0.9rem; /* ลดขนาดตัวอักษร */
+    font-weight: 300;
+    color: #f0e6f0;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    line-height: 1.2;
+    max-width: 90%; /* จำกัดความกว้างเพื่อป้องกันตกขอบ */
+    word-wrap: break-word; /* ให้ข้อความตัดคำเมื่อถึงขอบ */
+}
+
+.coupon-card:hover .coupon-content h2 {
+    opacity: 0;
+}
+
+.coupon-card:hover .coupon-content p {
+    opacity: 1;
+}
+
+/* Letter Page */
+.letter-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 50px 20px;
+    background-color: #1a1a1a;
+}
+
+.letter-page h1 {
+    text-align: center;
+}
+
+#letter-text {
+    font-size: 2rem; /* เพิ่มขนาดตัวอักษร */
+    font-weight: 300;
+    color: #f0e6f0;
+    white-space: pre-wrap;
+    margin: 20px 0;
+    text-align: left; /* ชิดซ้าย */
+    max-width: 1200px; /* ขยายความกว้างให้เต็มจอมากขึ้น */
+    width: 100%; /* เต็มความกว้างของ container */
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Responsive Adjustment */
+@media (max-width: 768px) {
+    .coupon-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ในหน้าจอเล็ก */
+        grid-template-rows: repeat(5, 200px); /* 5 แถว */
+    }
+}
